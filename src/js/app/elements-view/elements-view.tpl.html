@@ -1,0 +1,28 @@
+<div class="elements-view__ctrls">
+  <form ng-submit="setWidth()">
+    <label>Width: <input type="number" ng-model="model.width" min="100" max="600" step="1"></label>
+    <button type="submit">Set</button>
+  </form>
+</div>
+<div>
+  <div class="wrap-elements">
+
+    <div class="btn-block">
+      <button class="btn">
+        button
+      </button>
+    </div>
+
+    <div class="item-list">
+      <div class="item" ng-repeat="item in items">
+        <div class="item__text">
+          {{item}}
+        </div>
+        <div class="item_buttons">
+          <button class="item-btn"></button>
+          <button class="item-btn"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

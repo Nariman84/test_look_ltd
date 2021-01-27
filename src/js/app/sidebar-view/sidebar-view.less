@@ -1,0 +1,30 @@
+@import "variables";
+
+sidebar-view {
+  @border-size: 1px;
+
+  display: block;
+  width: @sidebar-width + @border-size;
+  border-left: @border-size solid @c-gray;
+  box-sizing: border-box;
+}
+
+.tags {
+  margin-bottom: 20px;
+
+  .tag-item {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid @c-gray;
+  
+    &:first-child {
+      border-top: 1px solid @c-gray;
+    }
+  }
+}
+
+.remove-btn {
+  margin-left: 12px;
+  cursor: pointer;
+}

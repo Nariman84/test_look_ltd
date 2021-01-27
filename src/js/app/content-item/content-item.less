@@ -1,0 +1,24 @@
+@import "variables";
+
+content-item {
+  display: block;
+  border-bottom: 1px solid @c-gray;
+
+  &:first-child {
+    border-top: 1px solid @c-gray;
+  }
+}
+
+.content-item {
+  
+  cursor: pointer;
+  color: @c-dark;  
+
+  &:hover {
+    background-color: @c-gray-light;
+  }
+}
+
+.selected-element {
+  background: @c-lightblue;
+}

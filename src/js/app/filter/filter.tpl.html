@@ -1,0 +1,31 @@
+<div class="sort">
+  <label for="order-items">Order: </label>
+  <select 
+    id="order-items" 
+    class="select-items"
+    ng-model="selectedOption" 
+    ng-options="option for option in selectOptions"
+    ng-model-options="{getterSetter: true}"
+  >
+  </select>
+</div>
+
+<div class="show-date">
+  <label for="checkbox-field">Only date: </label>
+  <input 
+    id="checkbox-field" 
+    type="checkbox" 
+    ng-model="isHiddenTime"
+    ng-model-options="{getterSetter: true}"
+  />
+</div>
+
+<div class="search">
+  <label for="search-field">Search: </label> 
+  <input 
+    id="search-field" 
+    type="text" 
+    ng-model="searchTitle"
+    ng-model-options="{getterSetter: true}"
+  />
+</div>

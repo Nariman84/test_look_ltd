@@ -1,0 +1,13 @@
+Summary
+
+<div class="last-item">
+  <div class="last-item__title" ng-if="getLastItemByDate().title">
+    Last: {{getLastItemByDate().title}}
+  </div>
+  <div class="last-item__tags">
+    <div class="tag-label">
+        Tags:
+    </div>
+    <div class="tag-list" ng-if="getUniqueTags()">{{getUniqueTags()}}</div>
+  </div>
+</div>

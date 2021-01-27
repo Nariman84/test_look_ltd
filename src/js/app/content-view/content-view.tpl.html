@@ -1,0 +1,26 @@
+<summary-view
+  items="items"
+></summary-view>
+
+<filter
+  hide-time="hideTime(isHiddenTime)"
+  filter-by-option="filterByOption(selectedOption)"
+  on-input-search="onInputSearch(searchTitle)"
+></filter>
+
+<div class="content-item-list">
+  <content-item
+    ng-repeat="item in items | orderBy: selectedOption | filter: query"
+    on-item-select="onItemSelect(selectedElem)"
+    item="item"
+    selected-item="selectedItem"
+    is-hidden-time="isHiddenTime"
+  >
+  </content-item>
+</div>
+
+<div class="add-item">
+  <label for="add-field">New title: </label> 
+  <input id="add-field" type="text" ng-model="newItemTitle" />
+  <button class="add-btn" ng-click="addItem()">Add</button>
+</div>

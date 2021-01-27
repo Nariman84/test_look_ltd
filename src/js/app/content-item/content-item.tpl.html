@@ -1,0 +1,12 @@
+<div 
+  class="content-item" 
+  ng-class="{'selected-element': selectedItem.id === item.id}"
+  ng-click="onClickItem(item.id)"
+>
+  <div class="title">
+    Title: {{item.title}}
+  </div>
+  <div class="date">
+    Date: {{getDate(item.date)}}
+  </div>
+</div>
