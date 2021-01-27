@@ -1,7 +1,6 @@
 function ItemService() {
 
   const items = makeDefaultData();
-  let selectedItem = items[0];
 
   return {
     getAllItems: () => items,
@@ -18,17 +17,16 @@ function ItemService() {
       return newItem;
     },
     
-    addTagToItem: tagName => {
-      selectedItem.tags.push(tagName);
+    addTagToItem: (item, tagName) => {
+      item.tags.push(tagName);
     },
 
-    removeTag: tagIdx => {
-      selectedItem.tags.splice(tagIdx, 1);
+    removeTagAt: (item, tagIdx) => {
+      item.tags.splice(tagIdx, 1);
     },
 
     getItemById: itemId => {
-      selectedItem = items.find(item => item.id === itemId);
-      return selectedItem;
+      return items.find(item => item.id === itemId);
     }
   }
 }

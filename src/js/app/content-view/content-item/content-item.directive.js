@@ -3,15 +3,15 @@ function contentItemDirective() {
     scope: {
       selectedItem: "=",
       item: "=",
-      isHiddenTime: "=",
-      onItemSelect: "&"
+      isShowDateOnly: "=",
+      onSelectItem: "&"
     },
     restrict: "E",
-    templateUrl: "./js/app/content-item/content-item.tpl.html",
-    controller: ["$scope", "$element", "itemService", contentItemCtrl]
+    templateUrl: "./js/app/content-view/content-item/content-item.tpl.html",
+    controller: ["$scope", "itemService", contentItemCtrl]
   };
 
-  function contentItemCtrl($scope, $element, itemService) {
+  function contentItemCtrl($scope, itemService) {
 
     // вывод даты в нужном формате (со временем или без)
     $scope.getDate = createdDate => {
@@ -23,23 +23,23 @@ function contentItemDirective() {
       const hours = d.getHours();
       const minutes = d.getMinutes();
 
-      const dateWithoutTime = `${getValueDate(date)}.${getValueDate(month)}.${year}`;
+      const dateWithoutTime = `${padTwoDigits(date)}.${padTwoDigits(month)}.${year}`;
 
-      if ($scope.isHiddenTime) {
+      if ($scope.isShowDateOnly) {
         return dateWithoutTime;
       }
 
-      return `${dateWithoutTime} ${getValueDate(hours)}:${getValueDate(minutes)}`;
+      return `${dateWithoutTime} ${padTwoDigits(hours)}:${padTwoDigits(minutes)}`;
     };
 
     // выбор элемента списка
     $scope.onClickItem = elementId => {
       const selectedElem = itemService.getItemById(elementId);
-      $scope.onItemSelect({selectedElem});
+      $scope.onSelectItem({selectedElem});
     };  
   }
 }
 
-function getValueDate(val) {
-  return val < 10 ? `0${val}` : `${val}`;
+function padTwoDigits(value) {
+  return `${value}`.padStart(2, "0");
 }

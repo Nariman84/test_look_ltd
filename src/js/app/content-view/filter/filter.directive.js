@@ -6,33 +6,33 @@ function filterDirective() {
       filterByOption: "&"
     },
     restrict: "E",
-    templateUrl: "./js/app/filter/filter.tpl.html",
-    controller: ["$scope", "$element", filterCtrl]
+    templateUrl: "./js/app/content-view/filter/filter.tpl.html",
+    controller: ["$scope", filterCtrl]
   };
 
-  function filterCtrl($scope, $element) {
+  function filterCtrl($scope) {
 
     $scope.selectOptions = ["title", "date"];
     
     // выбор параметра для сортировки списка
-    let selectedOption = "title";
-    $scope.selectedOption = function(activeOption) {
+    let sortByProp = "title";
+    $scope.sortByProp = function(activeProp) {
       if (arguments.length) {
-        selectedOption = activeOption;
-        $scope.filterByOption({selectedOption});
+        sortByProp = activeProp;
+        $scope.filterByOption({sortByProp});
       } else {
-        return selectedOption;
+        return sortByProp;
       }
     };
 
     // переключение фильтра для вывод даты в нужном формате (со временем или без)
-    let isHiddenTime;
-    $scope.isHiddenTime = function(isTimeOff) {
+    let isShowDateOnly;
+    $scope.isShowDateOnly = function(isTimeOff) {
       if (arguments.length) {
-        isHiddenTime = isTimeOff;
-        $scope.hideTime({isHiddenTime});
+        isShowDateOnly = isTimeOff;
+        $scope.hideTime({isShowDateOnly});
       } else {
-        return isHiddenTime;
+        return isShowDateOnly;
       }
     };
 

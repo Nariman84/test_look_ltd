@@ -3,18 +3,18 @@
 ></summary-view>
 
 <filter
-  hide-time="hideTime(isHiddenTime)"
-  filter-by-option="filterByOption(selectedOption)"
+  hide-time="hideTime(isShowDateOnly)"
+  filter-by-option="filterByOption(sortByProp)"
   on-input-search="onInputSearch(searchTitle)"
 ></filter>
 
 <div class="content-item-list">
   <content-item
-    ng-repeat="item in items | orderBy: selectedOption | filter: query"
-    on-item-select="onItemSelect(selectedElem)"
+    ng-repeat="item in items | orderBy: sortByProp | filter: query"
+    on-select-item="onSelectItem({selectedElem: selectedElem})"
     item="item"
     selected-item="selectedItem"
-    is-hidden-time="isHiddenTime"
+    is-show-date-only="isShowDateOnly"
   >
   </content-item>
 </div>

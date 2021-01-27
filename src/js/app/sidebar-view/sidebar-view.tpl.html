@@ -1,21 +1,21 @@
 <div class="selected-item">
   <div class="title">
-      Selected: {{selectedItem.title}}
+    Selected: {{selectedItem.title}}
   </div>
 
   <div class="tags">
-      <div class="tags_title">Tags:</div>
-      <div class="tag-list">
-          <div class="tag-item" ng-repeat="tag in selectedItem.tags track by $index">
-              <div class="tag-item__text">{{tag}}</div>
-              <button class="remove-btn" ng-click="removeTag($index)">x</button>
-          </div>
+    <div class="tags_title">Tags:</div>
+    <div class="tag-list">
+      <div class="tag-item" ng-repeat="tag in selectedItem.tags track by $index">
+        <div class="tag-item__text">{{tag}}</div>
+        <button class="remove-btn" ng-click="removeTagAt($index)">x</button>
       </div>
+    </div>
   </div>
 
   <div class="add-tag">
-      <label for="add-field">New tag: </label> 
-      <input id="add-field" type="text" ng-model="tagName" ng-disabled="!selectedItem" />
-      <button class="add-btn" ng-click="addNewTag()" ng-disabled="!selectedItem">Add</button>
+    <label for="add-field">New tag: </label> 
+    <input id="add-field" type="text" ng-model="tagName" ng-disabled="!selectedItem" />
+    <button class="add-btn" ng-click="addNewTag()" ng-disabled="!selectedItem">Add</button>
   </div>
 </div>

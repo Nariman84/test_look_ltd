@@ -3,14 +3,18 @@ function appDirective() {
     scope: {},
     restrict: "E",
     templateUrl: "./js/app/app.tpl.html",
-    controller: ["$scope", "$element", "itemService", appCtrl]
+    controller: ["$scope", "itemService", appCtrl]
   };
 
-  function appCtrl($scope, $element, itemService) {
+  function appCtrl($scope, itemService) {
     $scope.items = itemService.getAllItems();
 
-    $scope.onItemSelect = item => {
-      $scope.selectedItem = item;
+    $scope.onSelectItem = data => {
+      $scope.selectedItem = data.selectedElem;
+    };
+
+    $scope.onItemTagsChanged = () => {
+      // $scope.items = itemService.getAllItems();
     };
   }
 }

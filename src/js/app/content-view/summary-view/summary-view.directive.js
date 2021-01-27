@@ -4,11 +4,11 @@ function summaryViewDirective() {
       items: "="
     },
     restrict: "E",
-    templateUrl: "./js/app/summary-view/summary-view.tpl.html",
-    controller: ["$scope", "$element", summaryViewCtrl]
+    templateUrl: "./js/app/content-view/summary-view/summary-view.tpl.html",
+    controller: ["$scope", summaryViewCtrl]
   };
 
-  function summaryViewCtrl($scope, $element) {
+  function summaryViewCtrl($scope) {
     const items = $scope.items;
 
     $scope.getUniqueTags = () => {
@@ -22,7 +22,7 @@ function summaryViewDirective() {
       let uniqueTags = [...new Set(newArr)].join(', ');
 
       return uniqueTags;
-    }
+    };
 
     $scope.getLastItemByDate = () => {
       items.sort((a, b) => {
@@ -37,6 +37,6 @@ function summaryViewDirective() {
       });
 
       return items[items.length - 1];
-    }
+    };
   }
 }

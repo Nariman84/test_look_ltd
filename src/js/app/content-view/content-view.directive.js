@@ -3,30 +3,25 @@ function contentViewDirective() {
     scope: {
       selectedItem: "=",
       items: "=",
-      onClickItem: "&"
+      onSelectItem: "&"
     },
     restrict: "E",
     templateUrl: "./js/app/content-view/content-view.tpl.html",
-    controller: ["$scope", "$element", "itemService", contentViewCtrl]
+    controller: ["$scope", "itemService", contentViewCtrl]
   };
 
-  function contentViewCtrl($scope, $element, itemService) {    
+  function contentViewCtrl($scope, itemService) {    
 
-    $scope.selectedOption = "title";
-
-    // Выбор элемента списка    
-    $scope.onItemSelect = selectedElem => {
-      $scope.onClickItem({selectedElem});
-    };
+    $scope.sortByProp = "title";
 
     // выбор параметра для сортировки списка (title/date)
-    $scope.filterByOption = selectedOption => {
-      $scope.selectedOption = selectedOption;
+    $scope.filterByOption = sortByProp => {
+      $scope.sortByProp = sortByProp;
     };
 
     // вывод даты в нужном формате (со временем или без)
-    $scope.hideTime = isHiddenTime => {
-      $scope.isHiddenTime = isHiddenTime;
+    $scope.hideTime = isShowDateOnly => {
+      $scope.isShowDateOnly = isShowDateOnly;
     };
 
     // поиск элемента списка по title

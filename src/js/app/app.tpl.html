@@ -2,8 +2,9 @@
 <content-view
   items="items"
   selected-item="selectedItem"
-  on-click-item="onItemSelect(selectedElem)"
+  on-select-item="onSelectItem({selectedElem: selectedElem})"
 ></content-view>
 <sidebar-view
   selected-item="selectedItem"
+  on-item-tags-changed="onItemTagsChanged()"
 ></sidebar-view>

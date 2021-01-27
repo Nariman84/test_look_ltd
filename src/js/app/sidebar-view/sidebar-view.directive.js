@@ -3,28 +3,32 @@ function sidebarViewDirective() {
   return {
     scope: {
       selectedItem: "=",
-      updateTagsInSummary: "&"
+      onItemTagsChanged: "&"
     },
     restrict: "E",
     templateUrl: "./js/app/sidebar-view/sidebar-view.tpl.html",
-    controller: ["$scope", "$element", "itemService", sidebarViewCtrl],
+    controller: ["$scope", "itemService", sidebarViewCtrl],
   };
 
-  function sidebarViewCtrl($scope, $element, itemService) {
-    
+  function sidebarViewCtrl($scope, itemService) {
+
     // добавление нового тега
     $scope.addNewTag = () => {
+      const item = $scope.selectedItem;
       const tagName = $scope.tagName;
       
       if (tagName && tagName.trim()) {
-        itemService.addTagToItem(tagName);
+        itemService.addTagToItem(item, tagName);
         $scope.tagName = '';
+        $scope.onItemTagsChanged();
       }
     };
 
     // удаление тега
-    $scope.removeTag = tagIdx => {
-      itemService.removeTag(tagIdx);
+    $scope.removeTagAt = tagIdx => {
+      const item = $scope.selectedItem;
+      itemService.removeTagAt(item, tagIdx);
+      $scope.onItemTagsChanged();
     };
   }
 }

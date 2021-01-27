@@ -3,7 +3,7 @@
   <select 
     id="order-items" 
     class="select-items"
-    ng-model="selectedOption" 
+    ng-model="sortByProp" 
     ng-options="option for option in selectOptions"
     ng-model-options="{getterSetter: true}"
   >
@@ -15,7 +15,7 @@
   <input 
     id="checkbox-field" 
     type="checkbox" 
-    ng-model="isHiddenTime"
+    ng-model="isShowDateOnly"
     ng-model-options="{getterSetter: true}"
   />
 </div>
