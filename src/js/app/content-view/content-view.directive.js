@@ -19,12 +19,12 @@ function contentViewDirective() {
       $scope.onClickItem({selectedElem});
     };
 
-    // выбор параметра для сортировки списка
+    // выбор параметра для сортировки списка (title/date)
     $scope.filterByOption = selectedOption => {
       $scope.selectedOption = selectedOption;
-    }
+    };
 
-    // сортировка по title/date
+    // вывод даты в нужном формате (со временем или без)
     $scope.hideTime = isHiddenTime => {
       $scope.isHiddenTime = isHiddenTime;
     };

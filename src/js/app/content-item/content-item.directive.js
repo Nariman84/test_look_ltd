@@ -13,7 +13,6 @@ function contentItemDirective() {
 
   function contentItemCtrl($scope, $element, itemService) {
 
-
     // вывод даты в нужном формате (со временем или без)
     $scope.getDate = createdDate => {
       const d = new Date(createdDate);

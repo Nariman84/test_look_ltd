@@ -13,7 +13,6 @@ function filterDirective() {
   function filterCtrl($scope, $element) {
 
     $scope.selectOptions = ["title", "date"];
-    $scope.isHiddenTime = false;
     
     // выбор параметра для сортировки списка
     let selectedOption = "title";
@@ -26,10 +25,9 @@ function filterDirective() {
       }
     };
 
-    // сортировка по title/date
+    // переключение фильтра для вывод даты в нужном формате (со временем или без)
     let isHiddenTime;
     $scope.isHiddenTime = function(isTimeOff) {
-
       if (arguments.length) {
         isHiddenTime = isTimeOff;
         $scope.hideTime({isHiddenTime});
