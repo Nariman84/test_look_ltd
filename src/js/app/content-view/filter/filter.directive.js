@@ -1,9 +1,9 @@
 function filterDirective() {
   return {
     scope: {
-      hideTime: "&",
+      onHideTime: "&",
       onInputSearch: "&",
-      filterByOption: "&"
+      onFilterByOption: "&"
     },
     restrict: "E",
     templateUrl: "./js/app/content-view/filter/filter.tpl.html",
@@ -13,13 +13,13 @@ function filterDirective() {
   function filterCtrl($scope) {
 
     $scope.selectOptions = ["title", "date"];
-    
+
     // выбор параметра для сортировки списка
     let sortByProp = "title";
     $scope.sortByProp = function(activeProp) {
       if (arguments.length) {
         sortByProp = activeProp;
-        $scope.filterByOption({sortByProp});
+        $scope.onFilterByOption({sortByProp});
       } else {
         return sortByProp;
       }
@@ -30,7 +30,7 @@ function filterDirective() {
     $scope.isShowDateOnly = function(isTimeOff) {
       if (arguments.length) {
         isShowDateOnly = isTimeOff;
-        $scope.hideTime({isShowDateOnly});
+        $scope.onHideTime({isShowDateOnly});
       } else {
         return isShowDateOnly;
       }

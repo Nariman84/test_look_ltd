@@ -16,13 +16,23 @@ function ItemService() {
       items.push(newItem);
       return newItem;
     },
-    
-    addTagToItem: (item, tagName) => {
-      item.tags.push(tagName);
+
+    addTagToItem: (itemId, tagName) => {
+      items.forEach(item => {
+        if (item.id === itemId) {
+          item.tags.push(tagName);
+        }
+      });
+
+
     },
 
-    removeTagAt: (item, tagIdx) => {
-      item.tags.splice(tagIdx, 1);
+    removeTagAt: (itemId, tagIdx) => {
+      items.forEach(item => {
+        if (item.id === itemId) {
+          item.tags.splice(tagIdx, 1);
+        }
+      });
     },
 
     getItemById: itemId => {

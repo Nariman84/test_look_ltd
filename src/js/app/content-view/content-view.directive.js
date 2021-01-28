@@ -15,12 +15,12 @@ function contentViewDirective() {
     $scope.sortByProp = "title";
 
     // выбор параметра для сортировки списка (title/date)
-    $scope.filterByOption = sortByProp => {
+    $scope.onFilterByOption = sortByProp => {
       $scope.sortByProp = sortByProp;
     };
 
     // вывод даты в нужном формате (со временем или без)
-    $scope.hideTime = isShowDateOnly => {
+    $scope.onHideTime = isShowDateOnly => {
       $scope.isShowDateOnly = isShowDateOnly;
     };
 

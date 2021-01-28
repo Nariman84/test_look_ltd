@@ -3,7 +3,7 @@ function sidebarViewDirective() {
   return {
     scope: {
       selectedItem: "=",
-      onItemTagsChanged: "&"
+      // onItemTagsChanged: "&"
     },
     restrict: "E",
     templateUrl: "./js/app/sidebar-view/sidebar-view.tpl.html",
@@ -16,19 +16,19 @@ function sidebarViewDirective() {
     $scope.addNewTag = () => {
       const item = $scope.selectedItem;
       const tagName = $scope.tagName;
-      
+
       if (tagName && tagName.trim()) {
-        itemService.addTagToItem(item, tagName);
+        itemService.addTagToItem(item.id, tagName);
         $scope.tagName = '';
-        $scope.onItemTagsChanged();
+        // $scope.onItemTagsChanged();
       }
     };
 
     // удаление тега
     $scope.removeTagAt = tagIdx => {
       const item = $scope.selectedItem;
-      itemService.removeTagAt(item, tagIdx);
-      $scope.onItemTagsChanged();
+      itemService.removeTagAt(item.id, tagIdx);
+      // $scope.onItemTagsChanged();
     };
   }
 }
