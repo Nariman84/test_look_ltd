@@ -14,7 +14,9 @@ function appDirective() {
     };
 
     $scope.onItemTagsChanged = () => {
-      // $scope.items = itemService.getAllItems();
+      const itemId = $scope.selectedItem.id;
+      $scope.selectedItem = itemService.getItemById(itemId);
+      $scope.items = itemService.getAllItems();
     };
   }
 }

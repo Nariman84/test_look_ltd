@@ -9,9 +9,10 @@ function summaryViewDirective() {
   };
 
   function summaryViewCtrl($scope) {
-    const items = $scope.items;
+
 
     $scope.getUniqueTags = () => {
+      const items = $scope.items;
       let newArr = [];
 
       for (let i = 0; i < items.length; i++) {
@@ -25,6 +26,7 @@ function summaryViewDirective() {
     };
 
     $scope.getLastItemByDate = () => {
+      const items = $scope.items;
       items.sort((a, b) => {
         if (a.date > b.date) {
           return 1;
