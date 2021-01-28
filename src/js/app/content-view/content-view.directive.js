@@ -3,14 +3,15 @@ function contentViewDirective() {
     scope: {
       selectedItem: "=",
       items: "=",
-      onSelectItem: "&"
+      onSelectItem: "&",
+      onAddItem: "&"
     },
     restrict: "E",
     templateUrl: "./js/app/content-view/content-view.tpl.html",
     controller: ["$scope", "itemService", contentViewCtrl]
   };
 
-  function contentViewCtrl($scope, itemService) {    
+  function contentViewCtrl($scope, itemService) {
 
     $scope.sortByProp = "title";
 
@@ -28,7 +29,7 @@ function contentViewDirective() {
     $scope.onInputSearch = searchTitle => {
       $scope.query = {title: searchTitle};
     };
-    
+
     //добавление нового элемента списка
     $scope.addItem = () => {
       const newItemTitle = $scope.newItemTitle;
@@ -37,7 +38,8 @@ function contentViewDirective() {
         const item = itemService.addItem(newItemTitle);
         $scope.lastItemByDate = item;
         $scope.newItemTitle = '';
+        $scope.onAddItem();
       }
-    };  
+    };
   }
 }

@@ -7,16 +7,24 @@ function appDirective() {
   };
 
   function appCtrl($scope, itemService) {
-    $scope.items = itemService.getAllItems();
+    fetchItems();
 
     $scope.onSelectItem = data => {
       $scope.selectedItem = data.selectedElem;
     };
 
+    $scope.onAddItem = () => {
+      fetchItems();
+    }
+
     $scope.onItemTagsChanged = () => {
       const itemId = $scope.selectedItem.id;
       $scope.selectedItem = itemService.getItemById(itemId);
-      $scope.items = itemService.getAllItems();
+      fetchItems();
     };
+
+    function fetchItems() {
+      $scope.items = itemService.getAllItems();
+    }
   }
 }

@@ -1,10 +1,9 @@
 function ItemService() {
 
   const items = makeDefaultData();
-  let copyItems = [...items];
 
   return {
-    getAllItems: () => [...copyItems],
+    getAllItems: () => [...items],
     addItem: title => {
 
       const newItem = {
@@ -19,31 +18,21 @@ function ItemService() {
     },
 
     addTagToItem: (itemId, tagName) => {
-      let item = items.find(item => item.id === itemId);
+      const item = items.find(item => item.id === itemId);
+      const index = items.indexOf(item);
       const newItem = JSON.parse(JSON.stringify(item));
       newItem.tags.push(tagName);
 
-      items.forEach(function(item, index) {
-        if (item.id === itemId) {
-          this[index] = newItem;
-        }
-      }, items);
-
-      copyItems = [...items];
+      items.splice(index, 1, newItem);
     },
 
     removeTagAt: (itemId, tagIdx) => {
-      let item = items.find(item => item.id === itemId);
+      const item = items.find(item => item.id === itemId);
+      const index = items.indexOf(item);
       const newItem = JSON.parse(JSON.stringify(item));
       newItem.tags.splice(tagIdx, 1);
 
-      items.forEach(function(item, index) {
-        if (item.id === itemId) {
-          this[index] = newItem;
-        }
-      }, items);
-
-      copyItems = [...items];
+      items.splice(index, 1, newItem);
     },
 
     getItemById: itemId => {
